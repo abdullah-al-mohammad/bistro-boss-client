@@ -3,9 +3,11 @@ import { useContext } from 'react'
 import { AuthContext } from "../../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { LuShoppingCart } from "react-icons/lu";
+import useCart from "../../../hooks/useCart";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext)
+  const [cart] = useCart()
 
   const handleLogOut = () => {
     logOut()
@@ -34,7 +36,7 @@ const Navbar = () => {
       <Link to='/'>
         <button className="btn">
           <LuShoppingCart />
-          <div className="badge badge-secondary">+0</div>
+          <div className="badge badge-secondary">+{cart.length}</div>
         </button>
       </Link>
     </li>
