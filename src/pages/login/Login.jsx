@@ -21,6 +21,7 @@ const Login = () => {
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, [])
+
   const handleLogin = event => {
     event.preventDefault()
     const form = event.target
