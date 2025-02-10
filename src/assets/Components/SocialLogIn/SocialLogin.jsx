@@ -13,16 +13,16 @@ const SocialLogin = () => {
     googleSignIn()
       .then(result => {
         console.log(result.user);
-        const userInfo = {
+        const userInfo ={
           name: result.user?.displayName,
           email: result.user?.email
         }
         axiosPublic.post('/users', userInfo)
-          .then(res => {
-            console.log(res.data);
-            navigate('/')
-
-          })
+        .then(result=>{
+          console.log(result.data);
+          navigate('/')
+          
+        })
 
       })
       .catch(error => console.error()
