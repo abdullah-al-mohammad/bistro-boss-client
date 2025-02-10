@@ -6,6 +6,10 @@ import { Helmet } from 'react-helmet-async';
 import { FaEye } from 'react-icons/fa';
 import { FaEyeSlash } from "react-icons/fa";
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import SocialLogin from '../../assets/Components/SocialLogIn/SocialLogin';
+
+
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext)
   const [show, setShow] = useState()
@@ -16,22 +20,32 @@ const SignUp = () => {
     reset,
     formState: { errors },
   } = useForm()
+  const axiosPublic = useAxiosPublic()
 
   const onSubmit = (data) => {
-    console.log(data)
     createUser(data.email, data.password)
       .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        // update name and photo
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
-            reset()
-            Swal.fire({
-              title: "User SignUP Successfully!",
-              icon: "success",
-              draggable: true
-            });
-            navigate('/')
+            const userInfo = {
+              name: data.name,
+              email: data.email
+            }
+            axiosPublic.post('/users', userInfo)
+              .then(res => {
+                if (res.data.insertedId) {
+                  reset()
+                  Swal.fire({
+                    title: "User SignUP Successfully!",
+                    icon: "success",
+                    draggable: true
+                  });
+                  navigate('/')
+                }
+              })
           })
           .catch(error => console.error(error)
           )
@@ -109,6 +123,7 @@ const SignUp = () => {
               </div>
             </form>
             <p className='text-center p-4'><small>Already register? <Link className='text-red-500 font-bold' to={'/login'}>Go to Login</Link></small></p>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

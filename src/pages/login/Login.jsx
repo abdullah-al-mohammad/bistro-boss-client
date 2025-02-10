@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import SocialLogin from '../../assets/Components/SocialLogIn/SocialLogin';
 
 
 const Login = () => {
@@ -30,7 +31,6 @@ const Login = () => {
     signIn(email, password)
       .then(result => {
         const user = result.user
-        console.log(user);
         Swal.fire({
           title: "User Login Successful",
           showClass: {
@@ -113,6 +113,9 @@ const Login = () => {
               </div>
             </form>
             <p className='text-center p-4'><small>New here?<Link className='text-red-400 font-bold' to={'/signup'}>Create an Account</Link></small></p>
+            {/* google signIn */}
+            <SocialLogin></SocialLogin>
+
           </div>
         </div>
       </div>
