@@ -2,11 +2,12 @@ import { NavLink, Outlet } from "react-router-dom";
 import { FaBook, FaCalendarAlt, FaHome, FaList, FaShoppingBag, FaShoppingCart, FaUser, FaUserMinus, FaUtensils, } from "react-icons/fa";
 import { PiListStarFill } from "react-icons/pi";
 import { GiHamburgerMenu } from "react-icons/gi";
+import useAdmin from "../hooks/useAdmin";
 
 
 const Dashboard = () => {
   // TODO:get isAdmin value from the database
-  const isAdmin = true
+  const isAdmin = useAdmin()
 
   return (
     <div className="flex">
