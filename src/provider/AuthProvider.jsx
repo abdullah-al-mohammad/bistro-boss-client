@@ -2,6 +2,7 @@ import { createContext, useState } from 'react'
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { app } from '../firebase/firebae.config';
 import { useEffect } from "react";
+import useAxiosPublic from '../hooks/useAxiosPublic';
 
 export const AuthContext = createContext(null);
 // Initialize Firebase Authentication and get a reference to the service
@@ -12,6 +13,7 @@ const googleProvider = new GoogleAuthProvider()
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic()
 
   // user create account
   const createUser = (email, password) => {
@@ -42,10 +44,18 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubsCribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser)
-      if(currentUser){
+      if (currentUser) {
         // get token and store client
-      }else{
+        const userInfo = { email: currentUser.email }
+        axiosPublic.post('/jwt', userInfo)
+          .then(res => {
+            if (res.data.token) {
+              localStorage.setItem('access-token', res.data.token)
+            }
+          })
+      } else {
         // TODO: remove token (if token stored in the client side)
+        localStorage.removeItem('access-token')
       }
       console.log('current user', currentUser);
     })

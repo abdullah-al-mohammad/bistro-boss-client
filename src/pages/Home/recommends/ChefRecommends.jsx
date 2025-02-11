@@ -15,7 +15,7 @@ const ChefRecommends = ({ item }) => {
           <h2 className="card-title">Caeser Salad</h2>
           <p>{recipe}</p>
           <div className="card-actions">
-            <button className="btn btn-primary">Buy Now</button>
+            <button className="btn btn-primary">ADD To CART</button>
           </div>
         </div>
       </div>

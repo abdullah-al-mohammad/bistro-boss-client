@@ -10,27 +10,32 @@ const AllUsers = () => {
   const { refetch, data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = axiosSecure.get("/users");
-      return (await res).data;
+      const res = await axiosSecure.get("/users");
+
+      // const res = await axiosSecure.get("/users", {
+      //   headers: {
+      //     authorization: `Bearer ${localStorage.getItem('access-token')}`
+      //   }
+      // });
+      return res.data;
     },
   });
 
   const handleMakeAdmin = (user) => {
-    log
     axiosSecure.patch(`/users/admin/${user._id}`)
-    .then((res) => {
-      console.log(res.data);
-      if (res.data.modifiedCount > 0) {
-        refetch()
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Your work has been saved",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          refetch()
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
 
   const handleDeleteUser = (user) => {
