@@ -17,28 +17,51 @@ const Dashboard = () => {
           {
             isAdmin ? <>
 
-            <li>
-              <NavLink to="/dashboard/adminHome">
-              <FaHome></FaHome> Admin Home</NavLink>
+              <li>
+                <NavLink to="/dashboard/adminHome">
+                  <FaHome></FaHome> Admin Home</NavLink>
               </li>
-            <li>
-              <NavLink to="/dashboard/addItems">
-              <FaUtensils></FaUtensils> Add Items</NavLink>
+              <li>
+                <NavLink to="/dashboard/addItems">
+                  <FaUtensils></FaUtensils> Add Items</NavLink>
               </li>
-            <li>
-              <NavLink to="/dashboard/manageItems">
-              <FaList></FaList> Manage Items</NavLink>
+              <li>
+                <NavLink to="/dashboard/manageItems">
+                  <FaList></FaList> Manage Items</NavLink>
               </li>
-            <li>
-              <NavLink to="/dashboard/bookings">
-              <FaBook></FaBook> Manage Bookings</NavLink>
+              <li>
+                <NavLink to="/dashboard/bookings">
+                  <FaBook></FaBook> Manage Bookings</NavLink>
               </li>
-            <li>
-              <NavLink to="/dashboard/users">
-              <FaUser></FaUser> All Users</NavLink>
+              <li>
+                <NavLink to="/dashboard/users">
+                  <FaUser></FaUser> All Users</NavLink>
               </li>
-            </>:<>
-            
+            </> : <>
+              <li>
+                <NavLink to="/dashboard/userHome">
+                  <FaHome></FaHome> User Home</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/reservation">
+                  <FaCalendarAlt></FaCalendarAlt> Reservation</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/payment">
+                  <FaShoppingCart></FaShoppingCart> Payment History</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/cart">
+                  <FaShoppingCart></FaShoppingCart> My Cart</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/review">
+                  <PiListStarFill></PiListStarFill> Add Review</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/cart">
+                  <FaCalendarAlt></FaCalendarAlt> My Booking</NavLink>
+              </li>
             </>
           }
           {/* shared nav links */}
