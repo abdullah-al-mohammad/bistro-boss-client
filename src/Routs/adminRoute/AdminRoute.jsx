@@ -7,7 +7,7 @@ const AdminRoute = ({ children }) => {
   const [isAdmin, isAdminLoading] = useAdmin();
   const location = useLocation()
 
-  if (loading || isAdminLoading) {
+  if (loading && isAdminLoading) {
     return <progress className="progress w-56"></progress>
   }
 
