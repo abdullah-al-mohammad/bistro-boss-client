@@ -43,6 +43,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubsCribe = onAuthStateChanged(auth, currentUser => {
+      // setLoading(false)
       setUser(currentUser)
       if (currentUser) {
         // get token and store client
@@ -53,6 +54,7 @@ const AuthProvider = ({ children }) => {
               localStorage.setItem('access-token', res.data.token)
             }
           })
+          .finally(() => setLoading(false));
       } else {
         // TODO: remove token (if token stored in the client side)
         localStorage.removeItem('access-token')
@@ -62,7 +64,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       return unsubsCribe()
     }
-  }, [])
+  }, [auth])
 
   const authInfo = {
     user,
