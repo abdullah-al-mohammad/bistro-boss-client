@@ -43,7 +43,7 @@ const Cart = () => {
         <h2 className="text-2xl">Total-Items: {cart.length}</h2>
         <h2 className="text-2xl">Total-Payment: {totalPrice}</h2>
         {cart.length ?
-          <Link to={'/payment'}><button className="btn btn-primary">Pay</button></Link>
+          <Link to={'/dashboard/payment'}><button className="btn btn-primary">Pay</button></Link>
           : <Link><button disabled className="btn btn-primary">Pay</button></Link>
         }
       </div>
