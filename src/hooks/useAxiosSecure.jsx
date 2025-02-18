@@ -7,7 +7,7 @@ const axiosSecure = axios.create({
 })
 const useAxiosSecure = () => {
   const navigate = useNavigate()
-  const { logOut } = useAuth()
+  const { logOut, loading } = useAuth()
   // request interceptor to add authorization header for every secure call to the api
   axiosSecure.interceptors.request.use(function (config) {
     const token = localStorage.getItem('access-token')
@@ -23,9 +23,14 @@ const useAxiosSecure = () => {
     return response
   }, (err) => {
     const status = err.response.status
+<<<<<<< HEAD
     console.log(status);
 
     if (status === 401 || status === 403) {
+=======
+    
+    if(!loading && status === 401 || status === 403){
+>>>>>>> 232bc685085b85519085c5fac077bd511a650c4d
       logOut()
       navigate('/login')
     }

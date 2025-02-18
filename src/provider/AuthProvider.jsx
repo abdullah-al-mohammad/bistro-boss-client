@@ -32,6 +32,7 @@ const AuthProvider = ({ children }) => {
   }
   // update profile
   const updateUserProfile = (name, photo) => {
+    setLoading(true)
     return updateProfile(auth.currentUser, {
       displayName: name, photoURL: photo
     })
@@ -45,6 +46,7 @@ const AuthProvider = ({ children }) => {
     const unsubsCribe = onAuthStateChanged(auth, currentUser => {
       // setLoading(false)
       setUser(currentUser)
+      setLoading(true)
       if (currentUser) {
         // get token and store client
         const userInfo = { email: currentUser.email }
