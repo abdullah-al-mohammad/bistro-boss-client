@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
-import { useContext } from 'react'
-import { AuthContext } from "../../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { LuShoppingCart } from "react-icons/lu";
 import useCart from "../../../hooks/useCart";
+import useAuth from "../../../hooks/useAuth";
+import useAdmin from "../../../hooks/useAdmin";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext)
+  const { user, logOut } = useAuth()
+  const [isAdmin] = useAdmin()
   const [cart] = useCart()
 
   const handleLogOut = () => {
@@ -24,20 +25,28 @@ const Navbar = () => {
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/menu'>Our Menu</Link></li>
     <li><Link to='/order/salad'>Order Food</Link></li>
+    {
+      user && isAdmin ? <li><Link to='/dashboard/adminHome'>Admin Home</Link></li> : 'back'
+    }
+    {
+      user && !isAdmin ? <li><Link to='/dashboard/userHome'>User Home</Link></li> : 'back'
+    }
 
     {
       user ? <>
-        <button onClick={handleLogOut}>Logout</button>
+        <li><button onClick={handleLogOut}>Logout</button></li>
       </> : <>
         <li><Link to='/login'>Login</Link></li>
       </>
     }
     <li>
       <Link to='/dashboard/cart'>
-        <button className="btn">
-          <LuShoppingCart />
-          <div className="badge badge-secondary">+{cart.length}</div>
-        </button>
+        <li>
+          <button className="btn">
+            <LuShoppingCart />
+            <div className="badge badge-secondary">+{cart.length}</div>
+          </button>
+        </li>
       </Link>
     </li>
   </>
