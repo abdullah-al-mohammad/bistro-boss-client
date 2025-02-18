@@ -15,13 +15,8 @@ import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
 import UpdateItems from "../pages/Dashboard/UpdateItems/UpdateItems";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
-<<<<<<< HEAD
-import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
-import UserHome from "../pages/Dashboard/UserHome/UserHome";
-=======
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
->>>>>>> 232bc685085b85519085c5fac077bd511a650c4d
 
 export const router = createBrowserRouter([
   {
@@ -60,17 +55,8 @@ export const router = createBrowserRouter([
     children: [
       // normal routes
       {
-<<<<<<< HEAD
-        path: 'userHome',
-        element: <UserHome></UserHome>
-      },
-      {
-        path: 'cart',
-        element: <Cart></Cart>
-=======
         path: "userHome",
         element: <UserHome></UserHome>,
->>>>>>> 232bc685085b85519085c5fac077bd511a650c4d
       },
       {
         path: "cart",
@@ -87,13 +73,6 @@ export const router = createBrowserRouter([
 
       // admin only Routes
       {
-<<<<<<< HEAD
-        path: 'adminHome',
-        element: <AdminHome></AdminHome>
-      },
-      {
-        path: 'addItems',
-=======
         path: "adminHome",
         element: (
           <AdminRoute>
@@ -103,7 +82,6 @@ export const router = createBrowserRouter([
       },
       {
         path: "addItems",
->>>>>>> 232bc685085b85519085c5fac077bd511a650c4d
         // element: <AddItems></AddItems>
         element: (
           <AdminRoute>

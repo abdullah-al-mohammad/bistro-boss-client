@@ -23,14 +23,8 @@ const useAxiosSecure = () => {
     return response
   }, (err) => {
     const status = err.response.status
-<<<<<<< HEAD
-    console.log(status);
 
-    if (status === 401 || status === 403) {
-=======
-    
-    if(!loading && status === 401 || status === 403){
->>>>>>> 232bc685085b85519085c5fac077bd511a650c4d
+    if (!loading && status === 401 || status === 403) {
       logOut()
       navigate('/login')
     }
