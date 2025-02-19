@@ -21,8 +21,6 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const AdminHome = () => {
   const { user } = useAuth();
-  console.log(user);
-
   const axiosSecure = useAxiosSecure();
 
   const { data: stats = {} } = useQuery({

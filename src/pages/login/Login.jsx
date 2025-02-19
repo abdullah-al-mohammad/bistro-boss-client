@@ -72,8 +72,8 @@ const Login = () => {
       <Helmet>
         <title>Bistro Boss | login</title>
       </Helmet>
-      <div className="logInBg py-10">
-        <div className="hero-content flex-col lg:flex-row logInBg shadow-2xl mx-10">
+      <div className="hero min-h-full logInBg py-10">
+        <div className="hero-content flex-col lg:flex-row logInBg shadow-2xl">
           <div className="text-center lg:text-left">
             <img src={loginimg} alt="" />
           </div>

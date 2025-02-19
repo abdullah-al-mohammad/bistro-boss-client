@@ -19,12 +19,12 @@ const useAxiosSecure = () => {
   })
 
   // interceptor 401 and 403 status
-  axiosSecure.interceptors.response.use(function (respons) {
-    return respons
+  axiosSecure.interceptors.response.use(function (response) {
+    return response
   }, (err) => {
     const status = err.response.status
-    
-    if(!loading && status === 401 || status === 403){
+
+    if (!loading && status === 401 || status === 403) {
       logOut()
       navigate('/login')
     }
