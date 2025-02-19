@@ -41,14 +41,14 @@ const Navbar = () => {
           <Link to="/dashboard/adminHome">Dashboard</Link>
         </li>
       ) : (
-        "Back"
+        null
       )}
       {user && !isAdmin ? (
         <li>
           <Link to="/dashboard/userHome">Dashboard</Link>
         </li>
       ) : (
-        "Back"
+        null
       )}
       {user ? (
         <>
@@ -65,12 +65,10 @@ const Navbar = () => {
       )}
       <li>
         <Link to="/dashboard/cart">
-          <li>
             <button className="btn">
               {/* <img src={notification} alt="" /> */}
               <div className="badge badge-secondary">+{cart.length}</div>
             </button>
-          </li>
         </Link>
       </li>
     </>

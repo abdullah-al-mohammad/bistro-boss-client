@@ -17,8 +17,8 @@ const Category = () => {
         heading={'order online'}
       ></SectionTitle>
       <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
+        slidesPerView={4}
+        // spaceBetween={10}
         centeredSlides={true}
         pagination={{
           clickable: true,
