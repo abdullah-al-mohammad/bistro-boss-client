@@ -4,7 +4,7 @@ import { LuShoppingCart } from "react-icons/lu";
 import useCart from "../../../hooks/useCart";
 import useAuth from "../../../hooks/useAuth";
 import useAdmin from "../../../hooks/useAdmin";
-// import notification from '../../../assets/icon/cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview'
+import notification from '../../../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png'
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -65,17 +65,15 @@ const Navbar = () => {
       )}
       <li>
         <Link to="/dashboard/cart">
-            <button className="btn">
-              {/* <img src={notification} alt="" /> */}
-              <div className="badge badge-secondary">+{cart.length}</div>
-            </button>
+          <img className="w-8" src={notification} alt="" />
+          <div className="badge badge-secondary">+{cart.length}</div>
         </Link>
       </li>
     </>
   );
   return (
     <>
-      <div className="navbar fixed z-10 opacity-30 text-white bg-black">
+      <div className="navbar max-w-screen-xl fixed z-10 opacity-30 text-white bg-black">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -106,9 +104,9 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
-        <div className="navbar-end">
+        {/* <div className="navbar-end">
           <a className="btn">Button</a>
-        </div>
+        </div> */}
       </div>
     </>
   );
